@@ -178,41 +178,20 @@ const App = () => {
       <div className="absolute top-[-10%] right-[-5%] w-[30%] h-[30%] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Modern Glass Header */}
-      <header className="w-full premium-glass sticky top-0 z-50 border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-8 flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8">
+      <header className="w-full premium-glass sticky top-0 z-50 border-b border-black/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="flex items-center gap-8"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center"
           >
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative w-12 h-12 sm:w-20 sm:h-20 rounded-2xl sm:rounded-[2rem] bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center shadow-2xl overflow-hidden">
-                <span className="text-xl sm:text-3xl font-black text-white italic tracking-tighter">IB</span>
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <motion.div 
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-white rounded-full flex items-center justify-center shadow-lg"
-              >
-                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
-              </motion.div>
-            </div>
-            
             <div className="flex flex-col">
-              <div className="flex items-center gap-3 mb-1">
-                <div className="h-[1px] w-8 bg-pink-500/40" />
-                <span className="text-[10px] font-black text-pink-500/60 uppercase tracking-[0.5em]">Exclusive</span>
-              </div>
-              <h1 className="text-2xl sm:text-5xl font-black tracking-tighter text-black leading-none">
-                INSIDER <span className="gradient-text italic uppercase">BULLIES</span>
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tighter text-black leading-none">
+                findthem<span className="text-pink-500">.</span>
               </h1>
-              <div className="flex items-center gap-3 mt-2">
-                <span className="text-[9px] font-bold text-black/80 tracking-[0.3em] uppercase">Tracking @hannahgidey</span>
-                <div className="w-1 h-1 rounded-full bg-black/20" />
-                <span className="text-[9px] font-bold text-black/70 tracking-[0.3em] uppercase">v2.0 Stable</span>
-              </div>
+              <span className="text-[10px] font-bold text-black/40 uppercase tracking-[0.3em] mt-1">
+                Archive for @hannahgidey
+              </span>
             </div>
           </motion.div>
 
@@ -231,14 +210,12 @@ const App = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-12">
-            <div className="flex flex-col items-center">
-              <span className="text-[10px] font-black text-black uppercase tracking-[0.5em] mb-2">Total Logs</span>
-              <div className="px-6 py-2 rounded-2xl bg-black/5 border border-black/10 shadow-sm">
-                <span className="text-3xl font-black text-black tracking-tighter">
-                  {(total || 0).toLocaleString()}
-                </span>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="flex flex-col items-end">
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Total Comments</span>
+              <span className="text-xl font-black text-black">
+                {(total || 0).toLocaleString()}
+              </span>
             </div>
           </div>
         </div>
