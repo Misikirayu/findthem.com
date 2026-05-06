@@ -134,7 +134,7 @@ const App = () => {
                 seenKeys.current.add(key);
                 setStreamedComments(prev => {
                   const newId = `IB-${String(data.id_db).padStart(5, '0')}`;
-                  return [{ ...data, id: newId }, ...prev];
+                  return [...prev, { ...data, id: newId }];
                 });
                 setTotal(prev => prev + 1);
               }
