@@ -10,7 +10,7 @@ import {
   Loader2
 } from 'lucide-react';
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_BASE || "";
 const PAGE_SIZE = 100;
 
 const App = () => {
