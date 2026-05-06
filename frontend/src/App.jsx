@@ -41,10 +41,11 @@ const App = () => {
       const data = await resp.json();
 
       if (data.status === "success") {
-        setTotal(data.total ?? 0);
+        const currentTotal = data.total ?? 0;
+        setTotal(currentTotal);
         const newComments = data.comments.map((c, i) => ({
           ...c,
-          id: `IB-${String(total - (currentOffset + i)).padStart(5, '0')}`,
+          id: `IB-${String(currentTotal - (currentOffset + i)).padStart(5, '0')}`,
         }));
 
         // Track seen keys for dedup against stream

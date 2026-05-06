@@ -180,6 +180,8 @@ if os.path.exists(frontend_path):
     @app.get("/{full_path:path}")
     async def serve_frontend(full_path: str):
         index_file = os.path.join(frontend_path, "index.html")
+        if not os.path.exists(index_file):
+            return {"error": f"index.html not found at {index_file}"}
         return FileResponse(index_file)
 
 if __name__ == "__main__":
