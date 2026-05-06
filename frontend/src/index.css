@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F8F9FA] text-black overflow-hidden m-0 p-0;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.minimal-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.premium-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #FF0080, #7928CA);
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.15;
+  filter: blur(4px);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600;
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 20;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 0, 128, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.5;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { bottom: 100%; }
+  100% { bottom: -100px; }
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--accent-pink), #FF5B79);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TikTok-style Button Light */
+.tiktok-btn {
+  @apply relative overflow-hidden px-8 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 text-white;
+  background: var(--accent-pink);
+  box-shadow: 0 4px 20px rgba(254, 44, 85, 0.2);
+}
+
+.tiktok-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(254, 44, 85, 0.4);
+}
+
+.tiktok-input {
+  @apply bg-transparent border-b-2 border-black/10 px-4 py-4 text-2xl font-bold focus:outline-none focus:border-pink-500 transition-all text-center w-full max-w-md text-black;
+}
+
+.tiktok-input::placeholder {
+  color: #D1D5DB;
+}

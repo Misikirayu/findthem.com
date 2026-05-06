@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+.env
+browser_session/
+server.log
+data/*.db
+data/*.sqlite
+temp_resume.pdf
