@@ -179,7 +179,7 @@ const App = () => {
 
       {/* Modern Glass Header */}
       <header className="w-full premium-glass sticky top-0 z-50 border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-8 flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -187,16 +187,16 @@ const App = () => {
           >
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative w-20 h-20 rounded-[2rem] bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center shadow-2xl overflow-hidden">
-                <span className="text-3xl font-black text-white italic tracking-tighter">IB</span>
+              <div className="relative w-12 h-12 sm:w-20 sm:h-20 rounded-2xl sm:rounded-[2rem] bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center shadow-2xl overflow-hidden">
+                <span className="text-xl sm:text-3xl font-black text-white italic tracking-tighter">IB</span>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg"
+                className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-white rounded-full flex items-center justify-center shadow-lg"
               >
-                <div className="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
               </motion.div>
             </div>
             
@@ -205,7 +205,7 @@ const App = () => {
                 <div className="h-[1px] w-8 bg-pink-500/40" />
                 <span className="text-[10px] font-black text-pink-500/60 uppercase tracking-[0.5em]">Exclusive</span>
               </div>
-              <h1 className="text-5xl font-black tracking-tighter text-black leading-none">
+              <h1 className="text-2xl sm:text-5xl font-black tracking-tighter text-black leading-none">
                 INSIDER <span className="gradient-text italic uppercase">BULLIES</span>
               </h1>
               <div className="flex items-center gap-3 mt-2">
@@ -216,17 +216,17 @@ const App = () => {
             </div>
           </motion.div>
 
-          <div className="flex flex-1 max-w-lg mx-12 items-center gap-6">
+          <div className="flex w-full lg:flex-1 max-w-lg lg:mx-12 items-center gap-6">
             <div className="flex-1 relative group">
               <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-black/60 group-focus-within:text-pink-500 transition-colors">
-                <Search size={18} />
+                <Search size={16} />
               </div>
               <input 
                 type="text" 
                 placeholder="Search by ID or Username..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/40 backdrop-blur-md border border-white/40 outline-none pl-14 pr-6 py-4 rounded-3xl text-sm font-semibold placeholder:text-black/60 focus:ring-4 ring-pink-500/10 transition-all shadow-inner"
+                className="w-full bg-white/40 backdrop-blur-md border border-white/40 outline-none pl-12 pr-4 py-3 sm:py-4 rounded-2xl sm:rounded-3xl text-sm font-semibold placeholder:text-black/60 focus:ring-4 ring-pink-500/10 transition-all shadow-inner"
               />
             </div>
           </div>
@@ -247,7 +247,7 @@ const App = () => {
       {/* 4-Column Grid Stream Area */}
       <main 
         ref={scrollRef}
-        className="w-full max-w-7xl flex-1 px-8 pb-32 overflow-y-auto custom-scrollbar"
+        className="w-full max-w-7xl flex-1 px-4 sm:px-8 pb-32 overflow-y-auto custom-scrollbar"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           <AnimatePresence initial={false}>
