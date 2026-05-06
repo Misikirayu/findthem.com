@@ -24,10 +24,6 @@ app.add_middleware(
 # Shared executor for scraping tasks
 executor = ThreadPoolExecutor(max_workers=10)
 
-@app.get("/")
-async def root():
-    return {"status": "alive", "message": "Insider Bullies API is running"}
-
 # Serve Frontend
 frontend_path = os.path.join(os.path.dirname(__file__), "frontend", "dist")
 
