@@ -52,7 +52,7 @@ async def analyze_tiktok_user_stream(username: str = "hannahgidey"):
             comment_gen = fetch_tiktok_comments(target_username, max_videos=None, max_comments_per_video=None) 
             async for comment in comment_gen:
                 # Save to database in a separate thread to avoid blocking the event loop
-                await asyncio.to_thread(
+                new_id = await asyncio.to_thread(
                     add_comment,
                     comment["user"], 
                     comment.get("nickname", comment["user"]), 
@@ -63,6 +63,7 @@ async def analyze_tiktok_user_stream(username: str = "hannahgidey"):
                 )
                 
                 # Add default metadata for UI compatibility
+                comment["id_db"] = new_id
                 comment["category"] = "Neutral"
                 comment["severity"] = 0
                 yield json.dumps(comment) + "\n"

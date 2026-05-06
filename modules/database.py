@@ -49,10 +49,13 @@ def add_comment(username, nickname, target_user, text, sticker_url=None, video_i
             INSERT OR IGNORE INTO comments (username, nickname, target_user, text, sticker_url, video_id, fetched_at)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         ''', (username, nickname, target_user, text, sticker_url, video_id, datetime.now()))
+        new_id = c.lastrowid
         conn.commit()
         conn.close()
+        return new_id
     except Exception as e:
         print(f"Database Error in add_comment: {e}")
+        return None
 
 def get_comments(target_user=None, limit=100, offset=0):
     """Fetch comments with pagination support."""
@@ -60,17 +63,17 @@ def get_comments(target_user=None, limit=100, offset=0):
     c = conn.cursor()
     if target_user:
         c.execute(
-            'SELECT username, nickname, text, sticker_url, video_id FROM comments WHERE target_user = ? ORDER BY fetched_at DESC LIMIT ? OFFSET ?',
+            'SELECT id, username, nickname, text, sticker_url, video_id FROM comments WHERE target_user = ? ORDER BY fetched_at DESC LIMIT ? OFFSET ?',
             (target_user, limit, offset)
         )
     else:
         c.execute(
-            'SELECT username, nickname, text, sticker_url, video_id FROM comments ORDER BY fetched_at DESC LIMIT ? OFFSET ?',
+            'SELECT id, username, nickname, text, sticker_url, video_id FROM comments ORDER BY fetched_at DESC LIMIT ? OFFSET ?',
             (limit, offset)
         )
     rows = c.fetchall()
     conn.close()
-    return [{"user": r[0], "nickname": r[1], "text": r[2], "sticker_url": r[3], "video_id": r[4]} for r in rows]
+    return [{"id_db": r[0], "user": r[1], "nickname": r[2], "text": r[3], "sticker_url": r[4], "video_id": r[5]} for r in rows]
 
 def get_comment_count(target_user=None):
     """Get total number of comments, optionally filtered by target user."""

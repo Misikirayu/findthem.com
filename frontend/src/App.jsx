@@ -43,9 +43,9 @@ const App = () => {
       if (data.status === "success") {
         const currentTotal = data.total ?? 0;
         setTotal(currentTotal);
-        const newComments = data.comments.map((c, i) => ({
+        const newComments = data.comments.map((c) => ({
           ...c,
-          id: `IB-${String(currentTotal - (currentOffset + i)).padStart(5, '0')}`,
+          id: `IB-${String(c.id_db).padStart(5, '0')}`,
         }));
 
         // Track seen keys for dedup against stream
@@ -133,7 +133,7 @@ const App = () => {
               if (!seenKeys.current.has(key)) {
                 seenKeys.current.add(key);
                 setStreamedComments(prev => {
-                  const newId = `IB-${String(total + 1).padStart(5, '0')}`;
+                  const newId = `IB-${String(data.id_db).padStart(5, '0')}`;
                   return [{ ...data, id: newId }, ...prev];
                 });
                 setTotal(prev => prev + 1);
