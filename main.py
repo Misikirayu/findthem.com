@@ -24,21 +24,8 @@ app.add_middleware(
 # Shared executor for scraping tasks
 executor = ThreadPoolExecutor(max_workers=10)
 
-# Serve Frontend
+# Serve Frontend path definition (used at the end)
 frontend_path = os.path.join(os.path.dirname(__file__), "frontend", "dist")
-
-# Mount static files (JS, CSS, images)
-if os.path.exists(frontend_path):
-    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_path, "assets")), name="assets")
-
-    @app.get("/{full_path:path}")
-    async def serve_frontend(full_path: str):
-        # Serve index.html for all routes (SPA support)
-        # Note: API routes defined above this will take precedence
-        index_file = os.path.join(frontend_path, "index.html")
-        return FileResponse(index_file)
-else:
-    print(f"WARNING: Frontend path not found at {frontend_path}. Make sure to run 'npm run build' in the frontend directory.")
 
 from fastapi.responses import StreamingResponse
 import json
@@ -185,6 +172,15 @@ def get_sample_analysis():
         "summary": "The comment section shows a high level of coordinated bullying, primarily focused on the creator's appearance and content style. We recommend turning on comment filters."
     }
 
+
+# Final check for frontend and mount catch-all
+if os.path.exists(frontend_path):
+    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_path, "assets")), name="assets")
+    
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        index_file = os.path.join(frontend_path, "index.html")
+        return FileResponse(index_file)
 
 if __name__ == "__main__":
     import uvicorn
