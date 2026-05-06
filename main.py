@@ -23,7 +23,7 @@ executor = ThreadPoolExecutor(max_workers=10)
 
 @app.get("/")
 async def root():
-    return {"status": "alive", "message": "TokShield API is running"}
+    return {"status": "alive", "message": "Insider Bullies API is running"}
 
 from fastapi.responses import StreamingResponse
 import json
@@ -31,7 +31,7 @@ import json
 @app.get("/analyze_stream")
 async def analyze_tiktok_user_stream(username: str = "hannahgidey"):
     """
-    Streams TikTok comments for Hannah Gidey exclusively.
+    Streams TikTok comments for the target user exclusively.
     """
     # Force the target user
     target_username = "hannahgidey"
@@ -75,7 +75,7 @@ async def analyze_tiktok_user_stream(username: str = "hannahgidey"):
 @app.get("/history")
 async def get_history(username: str = "hannahgidey", limit: int = 100, offset: int = 0):
     """
-    Fetches stored comments for Hannah Gidey with pagination.
+    Fetches stored comments for the target user with pagination.
     """
     target_username = "hannahgidey"
     try:
@@ -94,7 +94,7 @@ async def get_history(username: str = "hannahgidey", limit: int = 100, offset: i
 @app.get("/analyze")
 async def analyze_tiktok_user(username: str = "hannahgidey"):
     """
-    Fetches and analyzes TikTok comments for Hannah Gidey.
+    Fetches and analyzes TikTok comments for the target user.
     """
     target_username = "hannahgidey"
     try:

@@ -44,7 +44,7 @@ const App = () => {
         setTotal(data.total ?? 0);
         const newComments = data.comments.map((c, i) => ({
           ...c,
-          id: `HG-${String(currentOffset + i + 1).padStart(5, '0')}`,
+          id: `IB-${String(currentOffset + i + 1).padStart(5, '0')}`,
         }));
 
         // Track seen keys for dedup against stream
@@ -132,7 +132,7 @@ const App = () => {
               if (!seenKeys.current.has(key)) {
                 seenKeys.current.add(key);
                 setStreamedComments(prev => {
-                  const newId = `HG-${String(prev.length + 1).padStart(5, '0')}`;
+                  const newId = `IB-${String(prev.length + 1).padStart(5, '0')}`;
                   return [...prev, { ...data, id: newId }];
                 });
                 setTotal(prev => prev + 1);
@@ -188,7 +188,7 @@ const App = () => {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
               <div className="relative w-20 h-20 rounded-[2rem] bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center shadow-2xl overflow-hidden">
-                <span className="text-3xl font-black text-white italic tracking-tighter">HG</span>
+                <span className="text-3xl font-black text-white italic tracking-tighter">IB</span>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <motion.div 
@@ -206,10 +206,10 @@ const App = () => {
                 <span className="text-[10px] font-black text-pink-500/60 uppercase tracking-[0.5em]">Exclusive</span>
               </div>
               <h1 className="text-5xl font-black tracking-tighter text-black leading-none">
-                HANNAH <span className="gradient-text italic uppercase">GIDEY</span>
+                INSIDER <span className="gradient-text italic uppercase">BULLIES</span>
               </h1>
               <div className="flex items-center gap-3 mt-2">
-                <span className="text-[9px] font-bold text-black/80 tracking-[0.3em] uppercase">Historical Archive</span>
+                <span className="text-[9px] font-bold text-black/80 tracking-[0.3em] uppercase">Comment Monitoring System</span>
                 <div className="w-1 h-1 rounded-full bg-black/20" />
                 <span className="text-[9px] font-bold text-black/70 tracking-[0.3em] uppercase">v2.0 Stable</span>
               </div>
