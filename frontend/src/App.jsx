@@ -164,8 +164,7 @@ const App = () => {
     return (
       c.user.toLowerCase().includes(q) || 
       (c.nickname && c.nickname.toLowerCase().includes(q)) ||
-      c.id.toLowerCase().includes(q) ||
-      (c.text && c.text.toLowerCase().includes(q))
+      c.id.toLowerCase().includes(q)
     );
   });
 
@@ -209,7 +208,7 @@ const App = () => {
                 INSIDER <span className="gradient-text italic uppercase">BULLIES</span>
               </h1>
               <div className="flex items-center gap-3 mt-2">
-                <span className="text-[9px] font-bold text-black/80 tracking-[0.3em] uppercase">Comment Monitoring System</span>
+                <span className="text-[9px] font-bold text-black/80 tracking-[0.3em] uppercase">Tracking @hannahgidey</span>
                 <div className="w-1 h-1 rounded-full bg-black/20" />
                 <span className="text-[9px] font-bold text-black/70 tracking-[0.3em] uppercase">v2.0 Stable</span>
               </div>
@@ -223,7 +222,7 @@ const App = () => {
               </div>
               <input 
                 type="text" 
-                placeholder="Search Archive..."
+                placeholder="Search by ID or Username..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white/40 backdrop-blur-md border border-white/40 outline-none pl-14 pr-6 py-4 rounded-3xl text-sm font-semibold placeholder:text-black/60 focus:ring-4 ring-pink-500/10 transition-all shadow-inner"
