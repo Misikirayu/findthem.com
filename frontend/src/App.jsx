@@ -44,7 +44,7 @@ const App = () => {
         setTotal(data.total ?? 0);
         const newComments = data.comments.map((c, i) => ({
           ...c,
-          id: `IB-${String(currentOffset + i + 1).padStart(5, '0')}`,
+          id: `IB-${String(total - (currentOffset + i)).padStart(5, '0')}`,
         }));
 
         // Track seen keys for dedup against stream
@@ -91,7 +91,7 @@ const App = () => {
           loadHistory(offset, true);
         }
       },
-      { root: scrollRef.current, rootMargin: "400px" }
+      { root: null, rootMargin: "600px" }
     );
 
     observer.observe(sentinelRef.current);
@@ -132,8 +132,8 @@ const App = () => {
               if (!seenKeys.current.has(key)) {
                 seenKeys.current.add(key);
                 setStreamedComments(prev => {
-                  const newId = `IB-${String(prev.length + 1).padStart(5, '0')}`;
-                  return [...prev, { ...data, id: newId }];
+                  const newId = `IB-${String(total + 1).padStart(5, '0')}`;
+                  return [{ ...data, id: newId }, ...prev];
                 });
                 setTotal(prev => prev + 1);
               }

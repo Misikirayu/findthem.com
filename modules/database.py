@@ -60,7 +60,7 @@ def get_comments(target_user=None, limit=100, offset=0):
     c = conn.cursor()
     if target_user:
         c.execute(
-            'SELECT username, nickname, text, sticker_url, video_id FROM comments WHERE target_user = ? ORDER BY fetched_at ASC LIMIT ? OFFSET ?',
+            'SELECT username, nickname, text, sticker_url, video_id FROM comments WHERE target_user = ? ORDER BY fetched_at DESC LIMIT ? OFFSET ?',
             (target_user, limit, offset)
         )
     else:
